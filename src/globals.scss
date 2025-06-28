@@ -1,0 +1,25 @@
+@use './variables.scss';
+
+html {
+  font-size: 16px;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: variables.$font-color;
+  text-decoration: none;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+span, p {
+    font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.375rem;
+}
