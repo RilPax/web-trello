@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { TUser, TUserRegistryData } from "../../../types";
-
+import { v4 as uuidv4 } from "uuid";
 interface TInitialState {
   currentUser: null | TUser;
   users: TUser[];
@@ -32,8 +32,8 @@ const registerUser = createAsyncThunk(
 
     const newUser: TUser = {
       ...userData,
-      __id: crypto.randomUUID()
-    }
+      __id: uuidv4(),
+    };
 
     if (userList) {
       const parsed = JSON.parse(userList) as TUser[];

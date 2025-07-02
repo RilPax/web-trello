@@ -1,16 +1,16 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authSliceReducer from "./slices/auth-slice/auth-slice";
-import todoSliceReducer from './slices/todo-slice/todo-slice'
+import todoSliceReducer from "./slices/todo-slice/todo-slice";
 import {
   useDispatch as dispatchHook,
-  useSelector as selectorHook 
+  useSelector as selectorHook,
 } from "react-redux";
 
-import type {TypedUseSelectorHook} from 'react-redux'
+import type { TypedUseSelectorHook } from "react-redux";
 
 const rootReducer = combineReducers({
   authReducer: authSliceReducer,
-  todoReducer: todoSliceReducer
+  todoReducer: todoSliceReducer,
 });
 
 export const store = configureStore({
