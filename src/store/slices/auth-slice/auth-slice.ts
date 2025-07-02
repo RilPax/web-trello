@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { TUser } from "../../../types";
+import type { TUser, TUserRegistryData } from "../../../types";
 
 interface TInitialState {
   currentUser: null | TUser;
@@ -25,21 +25,26 @@ const fetchCurrentUserData = createAsyncThunk(
 
 const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (userData: TUser) => {
+  async (userData: TUserRegistryData) => {
     const userList = localStorage.getItem("user/list");
 
     let updatedList: TUser[] = [];
 
+    const newUser: TUser = {
+      ...userData,
+      __id: crypto.randomUUID()
+    }
+
     if (userList) {
       const parsed = JSON.parse(userList) as TUser[];
-      updatedList = [...parsed, userData];
+      updatedList = [...parsed, newUser];
     } else {
-      updatedList = [userData];
+      updatedList = [newUser];
     }
 
     localStorage.setItem("user/list", JSON.stringify(updatedList));
     localStorage.setItem("user/current", JSON.stringify(userData));
-    return userData;
+    return newUser;
   }
 );
 

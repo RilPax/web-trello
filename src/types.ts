@@ -4,32 +4,45 @@ export interface TUser {
   __id: string;
 }
 
+export interface TUserRegistryData {
+    name: string;
+    password: string
+}
+
 export interface TTodo {
     id: string
+    listId: string
     title: string
-    description: string
-    completed: boolean
+    isFinished: boolean
+    description: string | null
 }
 
 export interface TList {
     id: string
+    deskId: string
     title: string
-    todos: TTodo[]
 }
 
 export interface TDesk {
     id: string
     userId: string
     title: string
-    lists: TList[]
 }
 
-export interface TAddUserDesk {
-    userId: string
+export interface addUserDeskData {
     title: string
+    userId: string
 }
 
-export interface TremoveUserDesk {
-    userId: string
-    id: string
+export interface addUserListData {
+    title: string
+    deskId: string
 }
+
+export interface addUserTodoData {
+    title: string
+    listId: string
+}
+
+export type TentitiesArray = TDesk[] | TList[] | TTodo[]
+
